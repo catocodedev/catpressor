@@ -1,3 +1,4 @@
+ 
 const fs = require('fs');
 
 const args = process.argv.slice(2);
@@ -12,7 +13,7 @@ fs.readFile(args[1], 'utf8', (err, data) => {
   if (err) throw err;
   var newData = "";
    // repleace all cases of ';' with '-1'
-   data = data.replace(/;/g, ' -1');
+   data = data.replace(/;/g, ';');
   // find patterns in data and make a map of them
     const map = {};
     const regex = /\b(\w+)\b/g;
@@ -57,8 +58,7 @@ fs.readFile(args[1], 'utf8', (err, data) => {
         });
         // write newData to Newfile
         const newFile = args[1].split('.')[0] + fileext;
-        // replace all ' -1' with ';'
-        newData = newData.replace(/ -1/g, ';');
+        newData = newData.replace(';',';');
         fs.writeFile(newFile, newData, (err) => {
             if (err) throw err;
             console.log('File Decompressed!');
